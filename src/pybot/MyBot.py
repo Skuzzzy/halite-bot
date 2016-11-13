@@ -8,9 +8,6 @@ import random
 myID, gameMap = getInit()
 sendInit("PBOT")
 
-
-dfs_memo = {}
-
 def move(location, gameMap, myID, border):
     site = gameMap.getSite(location)
     # Anytime we can claim a spot, do so

@@ -10,13 +10,9 @@ _productions = []
 _width = -1
 _height = -1
 
-myID = None
-
 def serializeMoveSet(moves):
-    returnString = ""
-    for move in moves:
-        returnString += str(move.loc.x) + " " + str(move.loc.y) + " " + str(move.direction) + " "
-    return returnString
+    # https://waymoot.org/home/python_string/
+    return ' '.join([move.serialize() for move in moves])
 
 def deserializeMapSize(inputString):
     splitString = inputString.split(" ")
@@ -38,8 +34,6 @@ def deserializeMap(inputString):
     splitString = inputString.split(" ")
 
     m = GameMap(_width, _height)
-
-    mine = []
 
     y = 0
     x = 0
@@ -76,9 +70,6 @@ def getInit():
     deserializeMapSize(getString())
     deserializeProductions(getString())
     m = deserializeMap(getString())
-
-    global myID
-    myID = playerTag
 
     return (playerTag, m)
 

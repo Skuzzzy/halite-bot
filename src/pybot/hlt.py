@@ -11,9 +11,6 @@ WEST = 4
 DIRECTIONS = [a for a in range(0, 5)]
 CARDINALS = [a for a in range(1, 5)]
 
-ATTACK = 0
-STOP_ATTACK = 1
-
 class Location:
     def __init__(self, x=0, y=0):
         self.x = x
@@ -27,6 +24,9 @@ class Move:
     def __init__(self, loc=0, direction=0):
         self.loc = loc
         self.direction = direction
+
+    def serialize(self):
+        return " ".join([str(val) for val in [self.loc.x, self.loc.y, self.direction]])
 
 class GameMap:
     def __init__(self, width = 0, height = 0, numberOfPlayers = 0):
